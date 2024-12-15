@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Validation</title>
+
+    <style>
+        button{
+            text-align: center;
+            border-radius: 10px;
+            padding: 10px;
+            margin-left: 150px;
+            border-color: orangered;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: bisque;
+            cursor: pointer;
+        
+        }
+
+        .username{
+            padding: 10px;
+            border-radius: 10px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: beige;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+        
+        label{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Form validation to ensure the user enters a username -->
+    <form id="userForm">
+        <label for="username">Enter Username:</label>
+        <input type="text" id="username"  class="username"     name="username" placeholder="Enter Username">
+        <h4 id="displayMessage"></h4>
+        <button type="button" onclick="validate()">CLICK HERE!!!</button>
+    </form> 
+
+    <script>
+        function validate() {
+            const data = document.getElementById('username').value;
+            const msg = document.getElementById('displayMessage');
+
+            if (data.trim() === '') {
+                msg.textContent = "Entering Username is Required. Please Enter a Username.";
+                msg.style.color = "red"; 
+            } else {
+                msg.textContent = "Username Submitted Successfully";
+                msg.style.color = "green"; 
+            }
+        }
+    </script>
+</body>
+</html>

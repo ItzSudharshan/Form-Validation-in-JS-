@@ -1,0 +1,111 @@
+<!-------Check whether form is valid or not 
+1) if fields are blank then display error , accept name and 
+age . if age is <=0 show error , if NAN  show erorr if everyting is correct show that form is valid and subimitted -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Validating Multiple Fields</title>
+    <style>
+        div{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+        }
+
+        label{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: x-large;
+            font-weight: 10px;
+            font-style: initial;
+        }
+
+        ::placeholder{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: large;
+            font-weight: 10px;
+            font-style: initial;
+            padding: 10px;
+        }
+
+        button{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border-radius: 7px;
+            font-size: x-large;
+            padding: 7px;
+            cursor: pointer;
+            background-color: bisque;
+            color: chocolate;
+        }
+
+        input{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding: 8px;
+            border-radius: 7px;
+            border-color:chocolate;
+        }
+
+        .error {
+            border-color: red;
+        }
+
+        .success{
+            border-color: green;
+        }
+
+        body{
+            background-color:aquamarine ;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="validation">
+    <form id="validateForm">
+        <label for="name">Enter Your Name:</label>
+        <input type="text" id="name" class="name" placeholder="Enter Name"><br> <br>
+        <label for="age">Enter Your age:</label> 
+        <input type="number" id="age" class="age" placeholder="Enter age"> <br> <br>
+        <button type="button" onclick="validate()">Submit</button>
+        <h2 id="Err"></h2>
+    </form>
+   
+</div>
+
+<script>
+    function validate() {
+        const form = document.getElementById("validateForm");
+        const name = form.name.value.trim();
+        const age = form.age.value.trim();
+        const info = document.getElementById("Err");
+
+        const nameField = form.name;
+        const ageField = form.age;
+
+        if (name === "" || age === "") {
+            info.innerHTML = "Name and Age Field Cannot be Empty!!";
+            info.style.color = "red"; 
+            nameField.classList.add("error");
+            ageField.classList.add("error");
+            nameField.classList.remove("success");
+            ageField.classList.remove("success");
+        }else if(isNaN(age) || age <= 0){
+            info.innerHTML = "Age Field in Invalid Please Enter Age Above 0!!";
+            info.style.color = "red"; 
+            nameField.classList.add("error");
+            ageField.classList.add("error");
+            nameField.classList.remove("success");
+            ageField.classList.remove("success");
+        
+        }else {
+            info.innerHTML = "Form is Valid and data is Submitted Successfully ";
+            info.style.color = "green"; 
+            nameField.classList.add("success");
+            ageField.classList.add("success");
+            nameField.classList.remove("error");
+            ageField.classList.remove("error");
+        }
+    }
+</script>
+
+</body>
+</html>
